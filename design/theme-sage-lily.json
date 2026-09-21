@@ -1,0 +1,56 @@
+{
+  "name": "Sage Lily",
+  "version": 1,
+  "fonts": {
+    "display": { "family": "Cormorant Garamond", "fallback": "New York", "file": "CormorantGaramond-Medium.ttf" },
+    "displayBold": { "family": "Cormorant Garamond", "weight": 700, "file": "CormorantGaramond-Bold.ttf" },
+    "body": { "family": "Jost", "fallback": "SF Pro Text", "file": "Jost-Regular.ttf" },
+    "bodyMedium": { "family": "Jost", "weight": 500, "file": "Jost-Medium.ttf" },
+    "bodySemibold": { "family": "Jost", "weight": 600, "file": "Jost-SemiBold.ttf" }
+  },
+  "type": {
+    "display": { "font": "display", "size": 34, "lineHeight": 1.1 },
+    "displaySmall": { "font": "display", "size": 20, "lineHeight": 1.15 },
+    "stat": { "font": "displayBold", "size": 18, "tabular": true },
+    "body": { "font": "body", "size": 15, "lineHeight": 1.25 },
+    "ui": { "font": "bodySemibold", "size": 12 },
+    "meta": { "font": "body", "size": 12 },
+    "label": { "font": "bodyMedium", "size": 11, "uppercase": true, "tracking": 0.08 },
+    "micro": { "font": "bodySemibold", "size": 10 }
+  },
+  "colors": {
+    "background": { "light": "#FBF7F5", "dark": "#1E241C" },
+    "surface": { "light": "#FFFFFF", "dark": "#262E23" },
+    "surfaceAlt": { "light": "#E6EBDB", "dark": "#303A2C" },
+    "ink": { "light": "#2F352B", "dark": "#EEF1E6" },
+    "inkMuted": { "light": "#7E8A74", "dark": "#A6B09B" },
+    "line": { "light": "#DCE3D2", "dark": "#3A4535" },
+    "accent": { "light": "#6F8461", "dark": "#9CAD8C" },
+    "accentInk": { "light": "#FFFFFF", "dark": "#1E241C" },
+    "accentSecondary": { "light": "#CE859A", "dark": "#D9A0B0" },
+    "sage": { "light": "#9CAD8C", "dark": "#7F9A73" },
+    "done": { "light": "#B9C2B0", "dark": "#6E7A64" },
+    "danger": { "light": "#B8564A", "dark": "#D98A80" }
+  },
+  "wallpaper": {
+    "light": "radial-gradient(60% 50% at 88% 92%, rgba(156,173,140,.35), transparent 70%), radial-gradient(40% 40% at 8% 8%, rgba(206,133,154,.18), transparent 70%)"
+  },
+  "radius": { "window": 14, "card": 12, "control": 8, "pill": 999, "checkbox": 11 },
+  "space": { "xs": 4, "s": 8, "m": 12, "l": 16, "window": 22, "xl": 32 },
+  "sizes": { "checkbox": 22, "checkboxWidget": 16, "ring": 36, "ringWidget": 56, "ringStroke": 4, "rowMinHeight": 40, "windowMin": [360, 480] },
+  "shadow": { "window": { "y": 10, "blur": 30, "color": "rgba(111,132,97,0.14)" } },
+  "materials": { "window": "solid", "toolbar": "ultraThin", "entryBar": "ultraThin", "rows": "solid" },
+  "motion": {
+    "taskComplete": { "duration": 0.25, "curve": "easeOut", "scaleKeyframes": [0.6, 1.15, 1.0], "sinkDuration": 0.3 },
+    "taskAdd": { "duration": 0.2, "rise": 8 },
+    "taskRemove": { "duration": 0.15 },
+    "reorder": { "duration": 0.2 },
+    "dayRollover": { "duration": 0.4, "kind": "crossfade" },
+    "reviewCardSwipe": { "duration": 0.2, "offset": 12 },
+    "allDoneCelebration": { "duration": 0.25, "kind": "popCheck" },
+    "streakIncrement": { "duration": 0.15, "kind": "fade" }
+  },
+  "sound": { "enabledByDefault": false, "complete": "tick" },
+  "stickers": { "lily": "design/stickers/lily.png", "star": "design/stickers/star-pink.png", "rule": "one per surface, never inside content rows" },
+  "naming": { "displayName": "To Dew" }
+}

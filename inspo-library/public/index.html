@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inspo Library</title>
+<style>
+  :root{
+    --bg:#f5f3ee; --panel:#fffdf9; --ink:#1d1b18; --muted:#7a746b; --line:#e6e1d8;
+    --accent:#c8788f; --accent-ink:#fff; --chip:#ece8e0; --chip-on:#1d1b18;
+    --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(30,20,10,.08);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#15140f; --panel:#1e1c17; --ink:#f1ede4; --muted:#9a9384; --line:#2d2a24; --chip:#2a2721; --chip-on:#f1ede4; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+  input,textarea{font:inherit;color:inherit}
+  a{color:inherit}
+
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:12px;padding:12px 20px}
+  .logo{font-weight:700;letter-spacing:-.01em;font-size:16px;display:flex;align-items:center;gap:8px}
+  .logo span{color:var(--accent)}
+  .search{flex:1;max-width:420px;display:flex;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 12px;gap:8px}
+  .search input{flex:1;border:0;background:none;outline:0;min-width:0}
+  .search svg{opacity:.5}
+  .spacer{flex:1}
+  .btn{padding:7px 12px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-weight:500;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .btn:hover{border-color:var(--muted)}
+  .btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .btn.accent{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn:disabled{opacity:.5;cursor:default}
+  .btn.small{padding:4px 10px;font-size:12px}
+  .count{color:var(--muted);font-variant-numeric:tabular-nums}
+
+  /* family chips */
+  .chips{display:flex;gap:6px;padding:0 20px 12px;overflow-x:auto;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{padding:6px 12px;border-radius:999px;background:var(--chip);white-space:nowrap;font-weight:500;display:inline-flex;gap:6px;align-items:center;border:1px solid transparent}
+  .chip:hover{border-color:var(--muted)}
+  .chip.on{background:var(--chip-on);color:var(--bg)}
+  .chip b{font-weight:500;opacity:.55;font-variant-numeric:tabular-nums}
+  .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--fc,#999)}
+
+  /* family description panel */
+  .famcard{margin:0 20px 16px;padding:16px 20px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);display:none;gap:18px;grid-template-columns:1.2fr 2fr}
+  .famcard.show{display:grid}
+  .famcard h2{margin:0 0 6px;font-size:18px;letter-spacing:-.01em}
+  .famcard p{margin:0;color:var(--muted)}
+  .vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px 16px;font-size:13px}
+  .vocab div b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px}
+  .famcard .tools{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end}
+  @media(max-width:800px){.famcard{grid-template-columns:1fr}}
+
+  /* gallery */
+  main{padding:0 20px 80px}
+  .grid{columns:5 220px;column-gap:14px}
+  .card{break-inside:avoid;margin:0 0 14px;background:var(--panel);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;position:relative;transition:transform .15s}
+  .card:hover{transform:translateY(-2px)}
+  .card img,.card video{display:block;width:100%;height:auto;background:var(--chip)}
+  .card .meta{padding:8px 10px 10px;font-size:12px}
+  .card .t{font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .card .fams{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+  .card .fams i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--fc)}
+  .card .badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;padding:2px 7px;border-radius:999px;font-weight:600;letter-spacing:.04em}
+  .card .badge.warn{background:var(--accent)}
+  .card .note-ind{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.85);color:#1d1b18;display:grid;place-items:center;font-size:12px}
+  .empty{padding:80px 20px;text-align:center;color:var(--muted)}
+
+  /* drawer */
+  .overlay{position:fixed;inset:0;background:rgba(20,15,10,.45);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(1100px,100vw);background:var(--bg);z-index:31;transform:translateX(100%);transition:transform .25s cubic-bezier(.2,.8,.2,1);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(360px,1fr);overflow:hidden}
+  .drawer.open{transform:none}
+  .drawer .view{background:#0f0e0c;display:grid;place-items:center;padding:20px;overflow:auto;position:relative}
+  .drawer .view img,.drawer .view video{max-width:100%;max-height:calc(100vh - 40px);object-fit:contain;border-radius:6px}
+  .drawer .close{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:18px;display:grid;place-items:center}
+  .drawer .nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:18px;display:grid;place-items:center}
+  .drawer .nav.prev{left:12px}.drawer .nav.next{right:12px}
+  .drawer .side{overflow:auto;padding:22px 22px 60px;display:flex;flex-direction:column;gap:18px}
+  .drawer .side>*{flex-shrink:0}
+  .side h1{font-size:20px;margin:0;letter-spacing:-.01em;line-height:1.25;border:0;background:none;width:100%;padding:0;outline:0}
+  .side h1:focus{background:var(--panel);border-radius:6px;padding:2px 6px}
+  .side .file{color:var(--muted);font-size:12px;word-break:break-all}
+  .side label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{padding:4px 10px;border-radius:999px;background:var(--chip);font-size:12px}
+  .tag.fam{background:var(--fc);color:#fff}
+  .tag.add{background:none;border:1px dashed var(--muted);color:var(--muted)}
+  .side textarea{width:100%;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 12px;resize:vertical;min-height:70px;outline:0}
+  .side textarea:focus{border-color:var(--accent)}
+  .side input.url{width:100%;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:8px 12px;outline:0}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .copyblock{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .copyblock .head{display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 12px;border-bottom:1px solid var(--line);font-weight:600}
+  .copyblock pre{margin:0;padding:12px;white-space:pre-wrap;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;max-height:220px;overflow:auto;color:var(--ink)}
+  .copyblock pre:empty::before{content:"— not analyzed yet —";color:var(--muted);font-style:italic}
+  .saved{font-size:11px;color:var(--muted)}
+  .famsel{display:flex;flex-wrap:wrap;gap:6px}
+  .famsel button{padding:4px 10px;border-radius:999px;background:var(--chip);font-size:12px;border:1px solid transparent}
+  .famsel button.on{background:var(--fc);color:#fff}
+  .danger{color:#c0392b}
+  @media(max-width:860px){.drawer{grid-template-columns:1fr;grid-template-rows:45vh 1fr}}
+
+  /* drop zone */
+  .drop{position:fixed;inset:0;z-index:50;background:rgba(200,120,143,.18);border:3px dashed var(--accent);display:none;place-items:center;font-size:22px;font-weight:600;color:var(--accent);pointer-events:none}
+  .drop.show{display:grid}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;opacity:0;transition:.2s;z-index:60;pointer-events:none;font-weight:500}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+  .spin{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:s .7s linear infinite}
+  @keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="logo">✿ Inspo <span>Library</span></div>
+    <div class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" placeholder="Search titles, tags, notes…">
+    </div>
+    <span class="count" id="count"></span>
+    <div class="spacer"></div>
+    <button class="btn" id="rescan" title="Pick up files dropped into the folder">↻ Rescan</button>
+    <button class="btn" id="analyzeAll" title="Analyze all un-analyzed items with Claude" style="display:none">✦ Analyze new</button>
+    <label class="btn primary" for="file">+ Add</label>
+    <input id="file" type="file" multiple accept="image/*,video/*" hidden>
+  </div>
+  <div class="chips" id="chips"></div>
+</header>
+
+<section class="famcard" id="famcard"></section>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">Nothing here yet — drop images anywhere on this page, or add them to the folder and hit Rescan.</div>
+</main>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="view" id="view"></div>
+  <div class="side" id="side"></div>
+</aside>
+<div class="drop" id="drop">Drop to add to your library</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const FAM_COLORS = ['#c8788f','#5b7fb0','#b8894a','#3f6b66','#7e7fb3','#8c1f2a','#9cad8c','#e3652c','#2b3a6e','#d9b36a','#6a1418','#3dd68c'];
+let LIB = { families: [], items: [] };
+let activeFam = null, query = '', current = null;
+
+const famColor = id => { const i = LIB.families.findIndex(f => f.id === id); return FAM_COLORS[(i < 0 ? 99 : i) % FAM_COLORS.length]; };
+const famName = id => (LIB.families.find(f => f.id === id) || { name: id }).name;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(msg, ms = 1800) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), ms); }
+async function api(url, opt = {}) {
+  const r = await fetch(url, { headers: { 'content-type': 'application/json' }, ...opt });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+async function load() { LIB = await api('/api/library'); $('#analyzeAll').style.display = LIB.canAnalyze ? '' : 'none'; render(); }
+
+function visible() {
+  const q = query.trim().toLowerCase();
+  return LIB.items.filter(it => {
+    if (activeFam === '__none') { if (it.families.length) return false; }
+    else if (activeFam && !it.families.includes(activeFam)) return false;
+    if (!q) return true;
+    return [it.title, it.file, it.notes, ...(it.tags || []), ...it.families.map(famName)].join(' ').toLowerCase().includes(q);
+  });
+}
+
+function render() {
+  // chips
+  const counts = {}; let none = 0;
+  for (const it of LIB.items) { if (!it.families.length) none++; for (const f of it.families) counts[f] = (counts[f] || 0) + 1; }
+  $('#chips').innerHTML =
+    `<button class="chip ${!activeFam ? 'on' : ''}" data-f="">All <b>${LIB.items.length}</b></button>` +
+    LIB.families.map(f => `<button class="chip ${activeFam === f.id ? 'on' : ''}" data-f="${f.id}" style="--fc:${famColor(f.id)}"><span class="dot"></span>${esc(f.name)} <b>${counts[f.id] || 0}</b></button>`).join('') +
+    (none ? `<button class="chip ${activeFam === '__none' ? 'on' : ''}" data-f="__none">Unsorted <b>${none}</b></button>` : '');
+  $('#chips').querySelectorAll('.chip').forEach(c => c.onclick = () => { activeFam = c.dataset.f || null; render(); });
+
+  // family card
+  const fam = LIB.families.find(f => f.id === activeFam);
+  const fc = $('#famcard');
+  if (fam) {
+    const v = fam.vocabulary || {};
+    fc.classList.add('show');
+    fc.innerHTML = `<div><h2 style="color:${famColor(fam.id)}">${esc(fam.name)}</h2><p>${esc(fam.description)}</p></div>
+      <div class="vocab">${['typography','layout','color','texture','motion'].map(k => `<div><b>${k}</b>${esc(v[k] || '—')}</div>`).join('')}</div>
+      <div class="tools"><button class="btn small" id="copyFam">Copy family brief</button><button class="btn small" id="editFam">Edit</button><button class="btn small danger" id="delFam">Delete family</button></div>`;
+    $('#copyFam').onclick = () => copy(`# ${fam.name}\n\n${fam.description}\n\n` + ['typography','layout','color','texture','motion'].map(k => `**${k[0].toUpperCase()+k.slice(1)}:** ${v[k] || ''}`).join('\n'), 'Family brief copied');
+    $('#editFam').onclick = () => editFamily(fam);
+    $('#delFam').onclick = async () => { if (confirm(`Delete family "${fam.name}"? Items stay, they just lose the tag.`)) { await api('/api/families/' + fam.id, { method: 'DELETE' }); activeFam = null; load(); } };
+  } else fc.classList.remove('show');
+
+  // grid
+  const items = visible();
+  $('#count').textContent = items.length === LIB.items.length ? `${items.length} items` : `${items.length} of ${LIB.items.length}`;
+  $('#empty').style.display = items.length ? 'none' : '';
+  $('#grid').innerHTML = items.map(it => `
+    <div class="card" data-id="${it.id}">
+      ${it.kind === 'video'
+        ? `<video src="/media/${it.id}" poster="/poster/${it.id}" muted loop playsinline preload="metadata"></video><span class="badge">VIDEO</span>`
+        : `<img src="/media/${it.id}" loading="lazy" alt="">`}
+      ${!it.analyzed ? `<span class="badge warn">NEW</span>` : ''}
+      ${it.notes ? `<span class="note-ind" title="${esc(it.notes)}">✎</span>` : ''}
+      <div class="meta"><div class="t">${esc(it.title)}</div>
+        <div class="fams">${it.families.map(f => `<i style="--fc:${famColor(f)}" title="${esc(famName(f))}"></i>`).join('')}</div></div>
+    </div>`).join('');
+  $('#grid').querySelectorAll('.card').forEach(c => {
+    c.onclick = () => open(c.dataset.id);
+    const v = c.querySelector('video'); if (v) { c.onmouseenter = () => v.play().catch(()=>{}); c.onmouseleave = () => { v.pause(); v.currentTime = 0; }; }
+  });
+}
+
+// ---------- detail drawer ----------
+function open(id) {
+  current = LIB.items.find(i => i.id === id); if (!current) return;
+  const it = current;
+  $('#view').innerHTML = `<button class="close" id="close">×</button><button class="nav prev" id="prev">‹</button><button class="nav next" id="next">›</button>` +
+    (it.kind === 'video' ? `<video src="/media/${it.id}" controls autoplay loop muted playsinline></video>` : `<img src="/media/${it.id}" alt="">`);
+  const fams = LIB.families;
+  $('#side').innerHTML = `
+    <div>
+      <h1 contenteditable="true" spellcheck="false" id="title">${esc(it.title)}</h1>
+      <div class="file">${esc(it.file)} · <a href="/media/${it.id}" target="_blank">open</a>${it.analyzedBy ? ` · analyzed by ${esc(it.analyzedBy)}` : ''}</div>
+    </div>
+    <div class="row">
+      ${LIB.canAnalyze ? `<button class="btn small accent" id="analyze">✦ ${it.analyzed ? 'Re-analyze' : 'Analyze with Claude'}</button>` : `<span class="saved">Set ANTHROPIC_API_KEY when starting the server to enable auto-analysis.</span>`}
+      <span class="saved" id="status"></span>
+    </div>
+    <div><label>Aesthetic families</label>
+      <div class="famsel" id="famsel">${fams.map(f => `<button data-f="${f.id}" class="${it.families.includes(f.id) ? 'on' : ''}" style="--fc:${famColor(f.id)}">${esc(f.name)}</button>`).join('')}
+        <button data-new="1" class="tag add" style="border-radius:999px">+ new family</button></div></div>
+    <div><label>Keywords / tags</label>
+      <div class="tags" id="tags">${(it.tags || []).map((t, i) => `<span class="tag" title="click to remove" data-i="${i}">${esc(t)}</span>`).join('')}<button class="tag add" id="addTag">+ tag</button></div></div>
+    <div><label>Why I saved this</label>
+      <textarea id="notes" placeholder="What caught your eye? What would you steal from it?">${esc(it.notes)}</textarea></div>
+    <div><label>Live site URL (optional)</label>
+      <div class="row"><input class="url" id="url" placeholder="https://…" value="${esc(it.url)}">${it.url ? `<a class="btn small" href="${esc(it.url)}" target="_blank">Visit ↗</a>` : ''}</div></div>
+    <div class="copyblock"><div class="head">Image prompt <button class="btn small primary" id="copyPrompt">Copy Image Prompt</button></div><pre id="promptTxt" contenteditable="true">${esc(it.imagePrompt)}</pre></div>
+    <div class="copyblock"><div class="head">Design brief for Claude Code <button class="btn small primary" id="copyBrief">Copy Brief</button></div><pre id="briefTxt" contenteditable="true">${esc(it.brief)}</pre></div>
+    <div class="row" style="justify-content:space-between"><span class="saved">Added ${new Date(it.addedAt).toLocaleDateString()}</span><button class="btn small danger" id="del">Remove from library</button></div>`;
+
+  $('#close').onclick = close;
+  $('#prev').onclick = () => step(-1); $('#next').onclick = () => step(1);
+  $('#copyPrompt').onclick = () => copy($('#promptTxt').innerText, 'Image prompt copied');
+  $('#copyBrief').onclick = () => copy($('#briefTxt').innerText, 'Design brief copied');
+  $('#promptTxt').onblur = () => save({ imagePrompt: $('#promptTxt').innerText.trim() });
+  $('#briefTxt').onblur = () => save({ brief: $('#briefTxt').innerText.trim() });
+  $('#title').onblur = () => save({ title: $('#title').innerText.trim() || it.file });
+  $('#title').onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); } };
+  let nt; $('#notes').oninput = () => { clearTimeout(nt); nt = setTimeout(() => save({ notes: $('#notes').value }), 500); };
+  $('#url').onchange = () => save({ url: $('#url').value.trim() }, true);
+  $('#famsel').querySelectorAll('button[data-f]').forEach(b => b.onclick = () => {
+    const f = b.dataset.f; const set = new Set(it.families); set.has(f) ? set.delete(f) : set.add(f);
+    save({ families: [...set] }, true);
+  });
+  $('#famsel').querySelector('[data-new]').onclick = () => editFamily(null, it);
+  $('#tags').querySelectorAll('.tag[data-i]').forEach(t => t.onclick = () => { const tags = it.tags.slice(); tags.splice(+t.dataset.i, 1); save({ tags }, true); });
+  $('#addTag').onclick = () => { const v = prompt('New tag'); if (v) save({ tags: [...it.tags, v.trim()] }, true); };
+  if ($('#analyze')) $('#analyze').onclick = () => analyze(it);
+  $('#del').onclick = async () => {
+    const delFile = confirm(`Remove "${it.title}" from the library?\n\nOK = also delete the file from the folder\nCancel = keep the file (it will come back on rescan)`);
+    await api(`/api/items/${it.id}?file=${delFile ? 1 : 0}`, { method: 'DELETE' }); close(); load();
+  };
+  $('#overlay').classList.add('open'); $('#drawer').classList.add('open');
+}
+function close() { $('#overlay').classList.remove('open'); $('#drawer').classList.remove('open'); $('#view').innerHTML = ''; current = null; }
+function step(d) { const list = visible(); const i = list.findIndex(x => x.id === current.id); const n = list[(i + d + list.length) % list.length]; if (n) open(n.id); }
+async function save(patch, reopen = false) {
+  if (!current) return;
+  const upd = await api('/api/items/' + current.id, { method: 'PATCH', body: JSON.stringify(patch) });
+  Object.assign(current, upd);
+  $('#status').textContent = 'saved'; setTimeout(() => { if ($('#status')) $('#status').textContent = ''; }, 1200);
+  render(); if (reopen) open(current.id);
+}
+async function analyze(it) {
+  const b = $('#analyze'); b.disabled = true; b.innerHTML = '<span class="spin"></span> analyzing…';
+  try { const upd = await api(`/api/items/${it.id}/analyze`, { method: 'POST' }); Object.assign(it, upd); await load(); open(it.id); toast('Analyzed ✦'); }
+  catch (e) { toast('Analysis failed: ' + e.message, 4000); b.disabled = false; b.textContent = '✦ Analyze with Claude'; }
+}
+async function editFamily(fam, item) {
+  const name = prompt('Family name', fam ? fam.name : ''); if (!name) return;
+  const id = fam ? fam.id : name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const description = prompt('What defines this style? (1–2 sentences)', fam ? fam.description : '') ?? '';
+  const v = { ...(fam ? fam.vocabulary : {}) };
+  for (const k of ['typography','layout','color','texture','motion']) { const r = prompt(`${k[0].toUpperCase()+k.slice(1)} vocabulary`, v[k] || ''); if (r !== null) v[k] = r; }
+  await api('/api/families', { method: 'POST', body: JSON.stringify({ id, name, description, vocabulary: v }) });
+  if (item) { await api('/api/items/' + item.id, { method: 'PATCH', body: JSON.stringify({ families: [...new Set([...item.families, id])] }) }); }
+  await load(); if (item) open(item.id);
+}
+function copy(text, msg) { navigator.clipboard.writeText(text).then(() => toast(msg)).catch(() => toast('Copy failed')); }
+
+// ---------- uploads ----------
+async function upload(files) {
+  let n = 0;
+  for (const f of files) {
+    if (!/^(image|video)\//.test(f.type)) continue;
+    await fetch('/api/upload?name=' + encodeURIComponent(f.name), { method: 'POST', body: f }); n++;
+  }
+  await load(); toast(`Added ${n} file${n === 1 ? '' : 's'}`);
+}
+$('#file').onchange = e => upload(e.target.files);
+let dragDepth = 0;
+document.addEventListener('dragenter', e => { e.preventDefault(); if (++dragDepth === 1) $('#drop').classList.add('show'); });
+document.addEventListener('dragleave', e => { e.preventDefault(); if (--dragDepth === 0) $('#drop').classList.remove('show'); });
+document.addEventListener('dragover', e => e.preventDefault());
+document.addEventListener('drop', e => { e.preventDefault(); dragDepth = 0; $('#drop').classList.remove('show'); if (e.dataTransfer.files.length) upload(e.dataTransfer.files); });
+document.addEventListener('paste', e => { const files = [...(e.clipboardData?.files || [])]; if (files.length) upload(files); });
+
+// ---------- misc ----------
+$('#q').oninput = e => { query = e.target.value; render(); };
+$('#rescan').onclick = async () => { const r = await api('/api/rescan', { method: 'POST' }); await load(); toast(`Rescan: +${r.added} / −${r.removed}`); };
+$('#analyzeAll').onclick = async () => {
+  const todo = LIB.items.filter(i => !i.analyzed); if (!todo.length) return toast('Everything is analyzed');
+  const b = $('#analyzeAll'); b.disabled = true; let k = 0;
+  for (const it of todo) { b.innerHTML = `<span class="spin"></span> ${++k}/${todo.length}`; try { await api(`/api/items/${it.id}/analyze`, { method: 'POST' }); } catch (e) { toast(e.message, 4000); break; } }
+  b.disabled = false; b.textContent = '✦ Analyze new'; await load();
+};
+$('#overlay').onclick = close;
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input,textarea,[contenteditable]')) return;
+  if (e.key === 'Escape') close();
+  if (current && e.key === 'ArrowRight') step(1);
+  if (current && e.key === 'ArrowLeft') step(-1);
+  if (e.key === '/') { e.preventDefault(); $('#q').focus(); }
+});
+load();
+</script>
+</body>
+</html>

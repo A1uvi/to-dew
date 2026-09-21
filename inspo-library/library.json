@@ -1,0 +1,913 @@
+{
+  "version": 1,
+  "families": [
+    {
+      "id": "widget-desktop",
+      "name": "Curated Widget Desktop",
+      "description": "Personalised macOS desktops treated as a mood board: a column of frosted-glass widgets (oversized clock, calendar, music player, photo tiles) floating over a full-bleed wallpaper, with custom folder/app icons that match the theme.",
+      "vocabulary": {
+        "typography": "System sans (SF Pro) — one huge light-weight numeric clock, tiny uppercase or lowercase labels, occasional handwritten script overlay.",
+        "layout": "Left-anchored 2–3 column widget stack, 12–20px radii, wallpaper left breathing on the right; dock as a horizontal anchor at the bottom.",
+        "color": "Palette is derived from the wallpaper — one hue family, widgets are translucent/frosted versions of it.",
+        "texture": "Frosted glass blur, soft drop shadows, photographic or painterly wallpaper, tiny 3D/figurine icons.",
+        "motion": "Mostly static; music-player progress bars and subtle hover states only."
+      }
+    },
+    {
+      "id": "scrapbook-collage",
+      "name": "Scrapbook Collage",
+      "description": "Junk-journal style layouts: photos, polaroids, torn paper, washi tape, stickers and handwritten notes layered over lined or grid paper. Everything is slightly rotated and overlapping — the story is told through stacking.",
+      "vocabulary": {
+        "typography": "One bold grotesk or hand-drawn display headline, then marker/handwriting for annotations, typewriter for captions; labels rotated a few degrees.",
+        "layout": "Freeform, no grid — z-index collage; elements pinned with tape or paperclips; clusters with arrows and doodles connecting them.",
+        "color": "Paper cream / notebook white as the base, one or two saturated accents (cherry red, bubblegum pink, sky blue).",
+        "texture": "Paper grain, torn edges, tape translucency, sticker gloss, hard little drop shadows under every cut-out.",
+        "motion": "Elements can drop in with slight rotation; hover lifts a piece; page-flip transitions."
+      }
+    },
+    {
+      "id": "sticker-sheet",
+      "name": "Sticker Sheet / Object Studies",
+      "description": "Collections of isolated cut-out objects (stars, bulldog clips, bows, flowers, stamps) arranged evenly on pure white like a sticker sheet or product catalogue. The appeal is material realism and repetition with variation.",
+      "vocabulary": {
+        "typography": "None, or a single tiny caption; the objects are the type.",
+        "layout": "Even scatter or loose grid, consistent object scale, generous white gutters, edges bleed off the frame.",
+        "color": "Objects keep their true colours on #FFFFFF; the set reads as a palette (pastel + one primary).",
+        "texture": "Photoreal materials — satin ribbon, enamel, chrome, sequins, denim, gingham.",
+        "motion": "Objects can be draggable stickers; slight wobble on hover."
+      }
+    },
+    {
+      "id": "blush-pastel",
+      "name": "Blush & Milk Pastel",
+      "description": "Soft pink, cream and sage palettes with airy white space, lilies and orchids, gentle blurred gradients. Feminine and calm — \"coquette\" without lace.",
+      "vocabulary": {
+        "typography": "Thin serif or light sans, small sizes, lots of tracking; hex codes and labels in lowercase.",
+        "layout": "Airy, lots of white, rounded cards, content floats rather than fills.",
+        "color": "#F5E6EA blush, #FBF7F2 milk, #DDE0BC sage, #CE859A rose, #9CAD8C moss — always desaturated.",
+        "texture": "Soft focus petals, matte paper, faint gingham/washi accents, no hard shadows.",
+        "motion": "Slow fades, petals drifting, nothing snappy."
+      }
+    },
+    {
+      "id": "painterly-texture",
+      "name": "Painterly Textures",
+      "description": "Full-bleed organic textures used as wallpapers or hero backgrounds: oil-and-water bubbles, mosaic waves with gold flecks, impressionist brushwork, hand-drawn stars on navy, blurred thermal gradients. No UI — pure surface.",
+      "vocabulary": {
+        "typography": "Not present; designed to sit under type with a high-contrast overlay.",
+        "layout": "Edge-to-edge, no focal point, tileable or centred bloom.",
+        "color": "Rich natural tones — olive, amber, teal, dusty rose, navy — with iridescent or metallic highlights.",
+        "texture": "Visible brush strokes, glass refraction, glitter, paper flecks, grain.",
+        "motion": "Slow parallax or subtle animated gradient; ideal for looping video backgrounds."
+      }
+    },
+    {
+      "id": "soft-ui-cards",
+      "name": "Cozy Soft UI",
+      "description": "Rounded, tactile interface cards in warm neutrals with a friendly lowercase voice — to-do widgets, \"good afternoon\" dashboards, paper-note icons. Skeuomorphic hints (lined paper, handwriting) inside a modern card system.",
+      "vocabulary": {
+        "typography": "Rounded sans (SF Rounded, Nunito, Quicksand) in medium weights, lowercase headings; handwritten or marker font for user content.",
+        "layout": "Card grid with 20–28px radii, 16–24px padding, checkboxes and pill buttons, everything centred in a floating panel.",
+        "color": "Warm greige #E8E4DC, cream #FFF6E5, one pastel accent (butter yellow, blush pink, sage) and a single dark text colour.",
+        "texture": "Matte, faint inner shadows, paper lines, slight card tilt for stacks.",
+        "motion": "Springy check animations, cards that stack/peel, gentle bounce."
+      }
+    },
+    {
+      "id": "moody-jewel",
+      "name": "Moody Jewel Tones",
+      "description": "Deep burgundy, oxblood and midnight-navy backgrounds with cream, gold or glass accents. Romantic script typography, centred compositions, dark-mode desktops with warm photos glowing out of the dark.",
+      "vocabulary": {
+        "typography": "High-contrast script (Pinyon, Great Vibes) paired with widely tracked small-caps sans; cream on dark.",
+        "layout": "Centred, symmetrical, vertical stacking; a single framed object as hero.",
+        "color": "#5A1A22 burgundy, #2B3350 navy, #1A0F10 near-black, #F3E9DC cream, antique gold.",
+        "texture": "Velvet matte, metallic foil, frosted glass, subtle vignette and glow.",
+        "motion": "Slow reveals, objects sliding out of frames, cinematic easing."
+      }
+    },
+    {
+      "id": "vintage-ephemera",
+      "name": "Vintage Ephemera & Postal",
+      "description": "Stamps, postmarks, receipts, tickets, envelopes, wax seals and photo strips — designed pieces of paper that imply travel, mail and memory. Often the building blocks of the scrapbook family.",
+      "vocabulary": {
+        "typography": "Typewriter mono, condensed sans for ticket numbers, script for signatures, letterpress-style serifs.",
+        "layout": "Stacked documents, rotated, pinned or clipped; perforated edges and rounded stamp corners.",
+        "color": "Sepia, cream, faded black ink, one accent (postal red, blush pink).",
+        "texture": "Crumpled paper, ink bleed, perforation, foil seals, halftone photos.",
+        "motion": "Stamp \"thunk\" animations, envelope flap opening, photostrip reveal."
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "d25433664b24",
+      "file": "035230926c90ca3ae8372bd0f2442053.jpg",
+      "title": "\"Brain food\" monthly scrapbook page",
+      "families": [
+        "scrapbook-collage"
+      ],
+      "tags": [
+        "lined notebook paper",
+        "bold grotesk headline",
+        "hand-drawn doodles",
+        "youtube card cut-outs",
+        "y2k tech icons",
+        "pixel cursor",
+        "washi tape",
+        "book cover collage",
+        "monthly recap"
+      ],
+      "imagePrompt": "Flat-lay scrapbook page on pale blue lined notebook paper, oversized black bold sans-serif headline at the top, collage of cut-out book covers, film posters and rounded video thumbnail cards taped down at slight angles, hand-drawn cloud doodles, stars and arrows in black ink, tiny pixel-art cursor and retro gadgets (CD player, cassette, CRT TV) as stickers, hard drop shadows under every cut-out, gingham washi tape strips, bright but paper-toned palette, high detail, top-down, no people faces prominent.",
+      "brief": "# Design brief: Brain food scrapbook\n\nBuild a complete website in this aesthetic. Overall feel: a personal monthly recap that looks like a page torn out of a notebook — playful, dense, hand-made, a little nostalgic for 2000s tech.\n\n## Typography\nHeadline: a heavy grotesk (Inter Black / Helvetica Neue Bold) at 96–140px, tight tracking, black. Sub-labels: hand-written marker font (Caveat / Gochi Hand) 16–18px for annotations and ratings. Body inside cards: system sans 13px. Never more than three faces on a page.\n\n## Color palette\nBase #F4F6F8 notebook white with #BFD7EA horizontal rule lines every 32px and a single red margin line; black #111 ink; card backgrounds #121212 (dark video cards); accent yellow #F3C63B stars and red #D8433B heart. Colour comes from the collaged images, not from UI.\n\n## Layout\nSingle scrolling page. A giant headline block, then a freeform collage grid: items absolutely positioned inside a 12-column canvas, each rotated -4° to 4°, overlapping by 10–20%. Group by clusters (books, videos, films). Small annotation strings placed beside items with hand-drawn arrows (SVG).\n\n## Spacing & shape\nNo consistent gutters on purpose; use a 32px baseline from the ruled lines. Cards have 6px radius, 1px black border, 4px 4px 0 #000 hard shadow. Tape strips are 48×14px rotated PNG/SVG overlays.\n\n## Texture & imagery\nRuled-paper CSS background, subtle paper grain overlay (noise at 4% opacity), gingham tape SVG pattern, doodle cloud outlines as inline SVG. Imagery: covers, thumbnails, retro gadget stickers with transparent backgrounds.\n\n## Motion\nOn load, items drop in staggered (translateY 20px + rotate) over 600ms. Hover lifts a card 4px and straightens rotation to 0. Doodles draw themselves with stroke-dashoffset.\n\n## Do / Don't\nDO keep everything looking cut-and-pasted. DO mix media types. DON'T use gradients, glassmorphism or rounded-corner-everything. DON'T align to a strict grid.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "263ffe3ab37a",
+      "file": "1e02f3407554af728b47692f4b3b1ef8.jpg",
+      "title": "Pink orchid MacBook desktop",
+      "families": [
+        "widget-desktop",
+        "blush-pastel"
+      ],
+      "tags": [
+        "macos widgets",
+        "oversized clock",
+        "white wallpaper",
+        "pink orchids",
+        "floating petals",
+        "frosted cards",
+        "music player widget",
+        "minimal dock",
+        "photographed screen"
+      ],
+      "imagePrompt": "Clean white desktop wallpaper with a single large pink orchid bloom in the lower right, a few loose pink lily petals scattered mid-air with soft shadows, high-key studio lighting, slight pink glow, lots of empty white space on the left for widgets, ultra-soft focus edges, 16:10 aspect ratio.",
+      "brief": "# Design brief: Orchid desktop\n\nBuild a complete website in this aesthetic. Overall feel: quiet, feminine, high-key — a white room with one flower in it.\n\n## Typography\nSF Pro Display / Inter. Clock: 120px weight 300 in #C8A0AE. Day/date: 20px weight 500. Labels: 12px uppercase tracking 0.08em, colour #9A8A90.\n\n## Color palette\nBackground #FCFAFA; pink family #F4C6D2, #E9A3B7, #C8788F; text #3B3336; card fill rgba(255,255,255,0.55) with 24px backdrop blur; dark player card #2A2426 as the single contrast element.\n\n## Layout\nLeft column of stacked widgets (clock 2×1, photo tile 1×1, petals row 2×1, music player 2×1) occupying 40% width; hero image anchored bottom-right at 55% width; nothing in the centre.\n\n## Spacing & shape\n16px gutters between widgets, 20px card radius, 24px inner padding. Page max-width none — full viewport.\n\n## Texture & imagery\nFrosted glass cards over a white photographic wallpaper; petals as floating PNGs with 30px blurred shadows.\n\n## Motion\nPetals drift 8px on a 6s sine loop; widgets fade in; player progress bar animates.\n\n## Do / Don't\nDO leave 50% of the screen empty. DON'T add borders or saturated colours. DON'T use more than one photo subject.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "3277d8e67fe9",
+      "file": "310e5ce165698705099bf3b94a2a54ab.jpg",
+      "title": "Oil-and-water bubble macro",
+      "families": [
+        "painterly-texture"
+      ],
+      "tags": [
+        "macro photography",
+        "oil bubbles",
+        "iridescent",
+        "earth tones",
+        "glass texture",
+        "organic cells",
+        "abstract wallpaper",
+        "refraction"
+      ],
+      "imagePrompt": "Extreme macro photograph of oil droplets floating on water, irregular rounded cells packed edge to edge, each cell a different muted colour — olive green, amber, dusty rose, teal, cream — with thin golden refractive rims, soft studio light, glossy glass-like surface, abstract, no text, vertical 9:16.",
+      "brief": "# Design brief: Oil bubble surface\n\nBuild a complete website in this aesthetic. Overall feel: organic, jewel-like, calm; a living background that makes plain white type feel expensive.\n\n## Typography\nType sits on top: a light geometric sans (Neue Haas / Inter 300) in cream #F5EFE6, 64–96px headlines with 0.02em tracking; small mono captions 12px.\n\n## Color palette\nOlive #6B7A4C, amber #B8894A, blush #D9A28F, teal #3F6B66, cream #EFE6D6 — derive UI accents by sampling the image. Text always cream or near-black #1E1C18.\n\n## Layout\nFull-bleed hero texture with a centred glass panel (max-width 720px) holding the message; sections below alternate cream backgrounds with cropped slices of the texture as dividers.\n\n## Spacing & shape\nGenerous: 120px section padding, 32px radius on the glass panel, 1px hairline borders at 20% white.\n\n## Texture & imagery\nThe macro photo is the texture; add backdrop-filter blur(20px) panels; avoid any additional pattern.\n\n## Motion\nKen Burns slow zoom 1.0→1.08 over 30s; parallax at 0.3 on scroll; cells could subtly wobble in a canvas/WebGL version.\n\n## Do / Don't\nDO let the image carry colour. DON'T tint it with overlays stronger than 10%. DON'T pair with rounded bubbly UI — keep UI crisp to contrast.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "b1d27d2106ec",
+      "file": "3546dbe19674323ad810fa33db2bf920.jpg",
+      "title": "Jurrnel — digital junk-journal app",
+      "families": [
+        "scrapbook-collage",
+        "soft-ui-cards"
+      ],
+      "tags": [
+        "app ui",
+        "page fan carousel",
+        "navy background",
+        "digital scrapbook",
+        "sticker layering",
+        "circular icon buttons",
+        "about me page",
+        "kpop aesthetic",
+        "handwritten labels"
+      ],
+      "imagePrompt": "A fanned stack of digital journal pages floating over a dusty navy blue background, the front page a cute scrapbook \"about me\" spread with pastel stickers, washi tape, polaroids and bubble handwriting, pages behind peeking out at angles, soft drop shadow beneath the stack, minimal white circular icon buttons at the top and bottom, app UI mockup, 4:3.",
+      "brief": "# Design brief: Jurrnel app\n\nBuild a complete website in this aesthetic. Overall feel: a cosy digital scrapbook — the chrome is calm and dark so the pages feel like paper glowing in the middle.\n\n## Typography\nUI: Inter / SF 600 for the journal title (28px white), 13px for metadata. Page content: hand-lettered display (e.g. \"Bubblegum\" style rounded outline font) + handwriting.\n\n## Color palette\nShell #3F4A6B navy, white #FFFFFF icons, shadow rgba(0,0,0,0.35). Page palette: cream paper #F6EFE4, baby blue #BFD5F0, pink #F4B8C8, mint #BFE3D0.\n\n## Layout\nCentre-stage carousel: the current page is 42% viewport wide, previous pages fanned left with -6°, -12°, -18° rotation and 24px offsets. Four circular 44px actions bottom-centre; two top-left, two top-right.\n\n## Spacing & shape\nCircular buttons 44px with 12px gaps; page radius 8px; 80px vertical breathing room above/below the stack.\n\n## Texture & imagery\nNavy shell is flat with a soft radial vignette; pages have paper texture, stickers with 1px white outline and hard shadow.\n\n## Motion\nSwipe fans pages with spring physics; tapping a sticker wobbles it; page-turn uses 3D rotateY.\n\n## Do / Don't\nDO keep the shell to two colours. DON'T put UI chrome on the page itself. DO let user content be maximalist.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "ca9aecea3491",
+      "file": "47d1abc76aa529b44222621c390130cd.jpg",
+      "title": "Thermal-gradient dark MacBook desktop",
+      "families": [
+        "widget-desktop",
+        "painterly-texture",
+        "moody-jewel"
+      ],
+      "tags": [
+        "macos widgets",
+        "dark mode",
+        "thermal gradient wallpaper",
+        "orange purple blur",
+        "reminders widget",
+        "battery ring",
+        "album art tiles",
+        "lily photo",
+        "photographed laptop"
+      ],
+      "imagePrompt": "Abstract thermal-camera style wallpaper: a blurred radial gradient bloom of deep purple, magenta, burning orange and yellow fading into near-black edges, soft grain, no shapes, moody and warm, 16:10 desktop wallpaper.",
+      "brief": "# Design brief: Thermal bloom desktop\n\nBuild a complete website in this aesthetic. Overall feel: warm dark mode — like a lava lamp seen through frosted glass; widgets are quiet black cards over the heat.\n\n## Typography\nSF Pro: clock 96px weight 300 in warm white #FFF3EA; labels 12px 500; body 14px in #E6DAD5.\n\n## Color palette\nWallpaper gradient stops #120814 → #5B1E5C → #C8462E → #F2A93B; cards rgba(18,10,16,0.62) with blur; accents: green #3DD68C battery ring, orange #F2A93B highlights.\n\n## Layout\nWidgets hug the left and right edges in two columns leaving the centre bloom clear; folders/icons in a 2×2 cluster; player card floats at lower left.\n\n## Spacing & shape\n16px grid, 18px radius, 14px padding, dock centred 56px.\n\n## Texture & imagery\nGrainy gradient (add 6% noise), glass cards, album-art photos with 1px inner glow.\n\n## Motion\nGradient slowly rotates hue ±10° over 40s; battery ring animates on load.\n\n## Do / Don't\nDO keep cards nearly opaque so text stays legible. DON'T let the gradient go neon. DON'T add borders.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "62af89269e51",
+      "file": "4b825e30df7d221d25eec4d713462a38.jpg",
+      "title": "Dark \"Things to do Today\" widget",
+      "families": [
+        "soft-ui-cards",
+        "widget-desktop"
+      ],
+      "tags": [
+        "to-do widget",
+        "dark card",
+        "checkboxes",
+        "strikethrough completed",
+        "date pill",
+        "rounded rectangle",
+        "thermal background",
+        "pill button",
+        "compact ui"
+      ],
+      "imagePrompt": "A single rounded-square widget mockup on a cream background: dark charcoal card with a top header bar showing a date pill and time, a short checklist with white checkboxes, completed items dimmed with strikethrough, a small pill button bottom-right, a blurred orange-and-black gradient peeking behind the header, clean product-shot lighting, 1:1.",
+      "brief": "# Design brief: Compact dark to-do widget\n\nBuild a complete website in this aesthetic. Overall feel: a tiny, confident task card — Apple-widget clarity with a little warmth from the gradient header.\n\n## Typography\nSF Pro / Inter: title 17px weight 600 white; items 14px weight 400; done items #7C7C82 with line-through; date pill 12px 600.\n\n## Color palette\nCard #1C1C1E, header gradient from #F26A2E to #1C1C1E, text #FFFFFF, muted #8E8E93, cream page #F3F1EC, pill button #2C2C2E.\n\n## Layout\nCard 320×320, header 56px with date pill left and \"Done\" right; list of 5 rows at 36px each with 18px checkbox; primary pill action bottom-right.\n\n## Spacing & shape\n24px card radius, 16px padding, 12px row gap, checkbox radius 4px.\n\n## Texture & imagery\nFlat with 1px rgba(255,255,255,0.06) border; header photo blurred 12px.\n\n## Motion\nCheckbox fills with a 150ms scale bounce; completed row fades to 50% and gets a strikethrough drawn left→right.\n\n## Do / Don't\nDO keep it under 6 items visible. DON'T add icons to every row. DO make the header the only colourful element.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "7376c3ea02e1",
+      "file": "5169b6f429da02a8cdabccd3c85dc0e9.jpg",
+      "title": "Merona — collage scrapbook website template",
+      "families": [
+        "scrapbook-collage",
+        "vintage-ephemera"
+      ],
+      "tags": [
+        "website template",
+        "grid paper background",
+        "kraft paper section",
+        "cut-out photo collage",
+        "butterfly wings",
+        "ticker marquee",
+        "typewriter body text",
+        "serif headline",
+        "product cards",
+        "torn paper"
+      ],
+      "imagePrompt": "Full-page website mockup in a scrapbook style: top section on pale grid paper with a serif headline and a woman cut-out photo with butterfly wings collaged behind her, a blue marquee strip, a large kraft-paper section with taped paper notes, torn map pieces and a travel photo cut-out, then a row of three journal product photos, then a featured posts grid, warm cream palette, browser window frame, tall vertical composition.",
+      "brief": "# Design brief: Merona scrapbook site\n\nBuild a complete website in this aesthetic. Overall feel: a travel-journal brand site — handmade, warm, editorial; the page itself feels like a desk covered in paper.\n\n## Typography\nHeadlines: a sturdy transitional serif (Playfair Display / Fraunces) 44–56px, sentence case. Body and captions: typewriter mono (Special Elite / IBM Plex Mono) 13–14px. Marquee text in mono uppercase.\n\n## Color palette\nGrid paper #F6F5F0 with #DCE3E8 lines; kraft #C89B6A; note paper #F3EEE2; ink #1C1B19; accent blue #8DB3C6 (marquee); black CTA #111.\n\n## Layout\nSections stacked: hero (text left 45%, collage right 55%) → 40px marquee strip → kraft section with a taped note card centred and a story block left/photo right → 3-up product row → 4-up blog grid. Max-width 1100px.\n\n## Spacing & shape\n96px section padding; product cards 24px gap; sticky notes rotated ±2°; CTA button square (0 radius) 12×28px padding.\n\n## Texture & imagery\nGrid-paper CSS background, kraft paper photo texture, tape and torn-paper PNG edges, maps and stamps as decorative cut-outs, drop shadows 0 2px 6px rgba(0,0,0,.25).\n\n## Motion\nMarquee scrolls continuously; collage pieces parallax at different rates; hover on products tilts the journal.\n\n## Do / Don't\nDO alternate paper types per section. DON'T use rounded corners on anything but photos. DO keep CTAs black and square.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "93f8579e1c94",
+      "file": "556b5774625bb98f29947228da211698.jpg",
+      "title": "Three flowers on white (lily, hibiscus, plumeria)",
+      "families": [
+        "sticker-sheet",
+        "blush-pastel"
+      ],
+      "tags": [
+        "isolated flowers",
+        "white background",
+        "pink lily",
+        "yellow hibiscus",
+        "plumeria",
+        "product photo",
+        "trio composition",
+        "soft studio light"
+      ],
+      "imagePrompt": "Three flowers isolated on a pure white background, evenly spaced in a row: a pink stargazer lily, a pale yellow hibiscus with a pink centre, a cream plumeria, soft even studio lighting, faint contact shadow, photoreal, catalogue style, 16:9.",
+      "brief": "# Design brief: Flower trio\n\nBuild a complete website in this aesthetic. Overall feel: a spare, botanical catalogue — objects on white with air around them.\n\n## Typography\nLight serif (Cormorant / EB Garamond 300) for names 20px; tiny mono for Latin names 11px tracking 0.1em.\n\n## Color palette\nWhite #FFFFFF, petal pinks #F2B8C6 / #E58BA3, butter #F3E3A8, cream #FBF6E9, text #2E2A2A.\n\n## Layout\n3-up and 4-up object rows with equal gaps; each object centred in a square cell with a caption below; no card backgrounds.\n\n## Spacing & shape\n48px gutters, 160px section padding, objects at max 320px.\n\n## Texture & imagery\nNone — pure white; only the object's own shadow (0 12px 24px rgba(0,0,0,.08)).\n\n## Motion\nFade + 8px rise on scroll; hover scales 1.03.\n\n## Do / Don't\nDO isolate every image on white. DON'T add backgrounds, borders or gradients. DO keep captions minimal.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "fbee5d5f09f4",
+      "file": "69c4f1f4c4ace11b1e7a130eb9acc804.jpg",
+      "title": "Interactive birthday website (Canva template)",
+      "families": [
+        "scrapbook-collage",
+        "moody-jewel",
+        "vintage-ephemera"
+      ],
+      "tags": [
+        "burgundy",
+        "kraft envelope hero",
+        "polaroid strips",
+        "gingham",
+        "balloon lettering",
+        "embroidered patch badges",
+        "mobile mockup",
+        "birthday site",
+        "checkered frame"
+      ],
+      "imagePrompt": "Mockup of a personal birthday website: on a laptop screen a kraft-paper envelope hero with red foil heart balloons, a disco ball and a puffy red balloon-letter \"HAPPY BIRTHDAY\"; beside it a phone showing a deep burgundy scrolling page with polaroid photos, red gingham frames, a vintage camera sticker and small typewriter captions; three embroidered red heart badges underneath, white paper-texture background, warm and nostalgic.",
+      "brief": "# Design brief: Burgundy birthday site\n\nBuild a complete website in this aesthetic. Overall feel: a love letter as a website — dark cherry red, kraft paper, party stickers; sentimental but graphic.\n\n## Typography\nDisplay: a playful rounded hand-lettered font (e.g. Chewy / \"balloon\" style) in white with red outline for the greeting; section titles in a bouncy sans 22px; captions typewriter 12px cream.\n\n## Color palette\nBurgundy #7A1F2B page, cherry #C8102E accents, kraft #C89B6A, cream #F4EBDD, gingham red/white pattern, white paper #F7F5F2 for the outer frame.\n\n## Layout\nMobile-first single column; hero = envelope illustration with stickers; then a vertical timeline of memory cards, each a polaroid or photo strip rotated ±3° with a typewriter caption; music player pinned at bottom.\n\n## Spacing & shape\n24px page padding, 40px between memories, photo borders 8px white, gingham frame 6px.\n\n## Texture & imagery\nPaper grain page, embroidered badge SVG style, foil balloon gloss, polaroid drop shadows.\n\n## Motion\nEnvelope flap opens on load; balloons bob; photos slide in from alternating sides; confetti burst on the final card.\n\n## Do / Don't\nDO stay in one red family plus kraft/cream. DON'T use pastel pinks here. DO make it feel like a physical card.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "52b93923bb08",
+      "file": "6f4fda7020c7502619c508f3ddc2c920.jpg",
+      "title": "Eternal Sunshine ephemera flat-lay",
+      "families": [
+        "vintage-ephemera",
+        "blush-pastel",
+        "scrapbook-collage"
+      ],
+      "tags": [
+        "pink pinstripe background",
+        "receipt tracklist",
+        "photo booth strip",
+        "envelope with wax seal",
+        "license plate",
+        "postage stamp",
+        "enamel pin",
+        "polka dot",
+        "black and white photos",
+        "fan edit"
+      ],
+      "imagePrompt": "Flat-lay of pastel pink ephemera on a pale pink pinstripe background: a cream envelope with a pink wax heart seal and cursive \"Love Letter\", a crumpled white receipt printed with a tracklist, a black-and-white photo booth strip, a small vintage postage stamp, a New York license plate, a pink enamel hair-dryer pin, a silver compact camera, all slightly rotated and overlapping with soft shadows, top-down, 3:2.",
+      "brief": "# Design brief: Pink ephemera flat-lay\n\nBuild a complete website in this aesthetic. Overall feel: a fan-made keepsake box — sweet, monochrome-pink, every element is a real paper object.\n\n## Typography\nReceipt: dot-matrix mono (e.g. \"Fake Receipt\" / Courier) 12px uppercase; envelope: brush script (Allura) 32px pink; captions typewriter.\n\n## Color palette\nPinstripe #F6E8EC/#FBF3F5, cream #F5F0E8, blush #E8B4C2, black #1A1A1A photos, silver #C9C9C9.\n\n## Layout\nA flat-lay grid: one hero object (photo) top-left, a vertical receipt centre, strip right — hand-placed, overlapping 15%; text content lives inside the objects (receipt = tracklist / menu, envelope = intro, stamp = date).\n\n## Spacing & shape\nObjects rotated -8° to 8°; shadows 0 6px 14px rgba(0,0,0,.18); 64px page margins.\n\n## Texture & imagery\nCrumpled paper photo for the receipt, foil wax seal, halftone black-and-white photos, pinstripe CSS background.\n\n## Motion\nObjects can be dragged; receipt \"prints\" line-by-line on load; envelope flap opens on hover.\n\n## Do / Don't\nDO put all copy inside paper objects. DON'T introduce any colour outside pink/cream/black/silver. DO photograph, not illustrate.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "ccc430c06aee",
+      "file": "753050bd73eee2ce7f8386a1df2f2da2.jpg",
+      "title": "Hand-drawn stars on navy",
+      "families": [
+        "painterly-texture",
+        "moody-jewel"
+      ],
+      "tags": [
+        "navy blue",
+        "sketched stars",
+        "speckle",
+        "watercolour wash",
+        "nursery wallpaper",
+        "night sky pattern",
+        "tileable"
+      ],
+      "imagePrompt": "Seamless pattern of hand-sketched five-point stars in pencil-grey and silver on a mottled navy blue watercolour background, scattered tiny white speckles like paint flecks, stars in varied sizes, whimsical and vintage, wallpaper style, 16:10.",
+      "brief": "# Design brief: Navy star night\n\nBuild a complete website in this aesthetic. Overall feel: a storybook night sky — cosy dark mode with a hand-drawn edge.\n\n## Typography\nSerif display with character (Fraunces / Libre Caslon) in silver #D9D6CF 56px; body Inter 16px #C9CCD6; small caps labels.\n\n## Color palette\nNavy #1F2C5B / #2B3A6E, silver #CFCBC2, cream #F1EDE3, speckle white; accent warm gold #D9B36A sparingly.\n\n## Layout\nPattern as full-page background with content on cream \"paper\" panels (max 760px) that float over the sky; footer and hero use the sky directly with silver type.\n\n## Spacing & shape\nPanels 12px radius, 48px padding, 96px between; pattern tile ~600px.\n\n## Texture & imagery\nWatercolour mottling, pencil-stroke stars (SVG with rough stroke), paper panels with slight grain.\n\n## Motion\nStars twinkle by opacity 0.6→1 at random 3–7s intervals; slow drift of the pattern (background-position) 1px/s.\n\n## Do / Don't\nDO keep stars sketchy, not geometric. DON'T use pure black. DON'T over-animate — a few stars at a time.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "d80fa245b778",
+      "file": "84bea8610e0886ee948d5ccd9bf0c523.jpg",
+      "title": "Mosaic wave texture with gold flecks",
+      "families": [
+        "painterly-texture",
+        "blush-pastel"
+      ],
+      "tags": [
+        "vertical waves",
+        "mosaic tiles",
+        "gold sequins",
+        "watercolour",
+        "peach sage cream",
+        "abstract",
+        "phone wallpaper",
+        "organic stripes"
+      ],
+      "imagePrompt": "Abstract vertical wavy stripes made of tiny watercolour mosaic tiles in cream, peach, sage green, dusty blue and beige, each stripe edged with a row of shimmering gold sequins and glass beads, soft painterly, luxurious but pastel, seamless texture, 9:16.",
+      "brief": "# Design brief: Mosaic waves\n\nBuild a complete website in this aesthetic. Overall feel: soft luxury — a spa/wedding texture; pastel but with real sparkle.\n\n## Typography\nElegant high-contrast serif (Cormorant Garamond / Bodoni Moda) 48–72px in #6B5E52; captions in a light sans 13px tracking 0.12em uppercase.\n\n## Color palette\nCream #F2EBDD, peach #E8B49A, sage #B7C4AE, dusty blue #9DB2BD, taupe #C9B9A4, gold #C9A24C.\n\n## Layout\nTexture used as side panels or as a hero backdrop behind a centred cream card; sections separated by thin gold rules; asymmetric two-column content with generous margins.\n\n## Spacing & shape\n120px section padding, 1px gold hairlines, 4px radius max.\n\n## Texture & imagery\nThe mosaic image itself plus gold-foil accents (linear-gradient gold on buttons/rules); paper-white panels.\n\n## Motion\nSlow vertical drift of the texture; gold shimmer via a moving highlight gradient on hover.\n\n## Do / Don't\nDO use gold as a thin accent only. DON'T flatten the palette to one pink. DO keep type high-contrast serif.",
+      "notes": "I really like this texture",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "2b49ba858c99",
+      "file": "86bb18e22ce2e51dda7165ac4dfe34e5.jpg",
+      "title": "Oxblood red MacBook desktop",
+      "families": [
+        "widget-desktop",
+        "moody-jewel"
+      ],
+      "tags": [
+        "dark red wallpaper",
+        "macos widgets",
+        "leopard print tile",
+        "orange lilies",
+        "fashion editorial photo",
+        "gold jewellery",
+        "calendar widget",
+        "weather widget",
+        "french locale",
+        "photographed in dark room"
+      ],
+      "imagePrompt": "Solid deep oxblood red desktop wallpaper, matte velvet texture with a very subtle vignette, no objects, moody and luxurious, 16:10.",
+      "brief": "# Design brief: Oxblood editorial desktop\n\nBuild a complete website in this aesthetic. Overall feel: fashion-magazine dark mode — red velvet with leopard, gold and lilies glowing out of it.\n\n## Typography\nSF Pro: date/temp 22px 600 warm white; labels 11px; editorial photo captions in a Didone serif (Bodoni) if used on web.\n\n## Color palette\nOxblood #6A1418 background, darker card #4E0F12 at 70%, warm white #F6EEE4, orange-lily #E3652C, gold #C99A4B, leopard tan/black pattern as an accent tile.\n\n## Layout\nLeft column: weather, calendar, agenda, one big photo tile; right column: one large editorial photo + folder row + player; centre left empty for the wallpaper.\n\n## Spacing & shape\n16px grid, 16px radius, widgets 160px units; dock full-width.\n\n## Texture & imagery\nVelvet matte red, photographic tiles (leopard, gold hands, lilies), slight film grain over everything.\n\n## Motion\nNearly static; photo tiles crossfade every 30s.\n\n## Do / Don't\nDO limit imagery to warm tones. DON'T use pure white. DON'T mix in cool blues.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "e58a69543df7",
+      "file": "86de20ee79a998442e13ef377225286a.jpg",
+      "title": "Strawberries & Matcha calendar palette",
+      "families": [
+        "blush-pastel",
+        "soft-ui-cards"
+      ],
+      "tags": [
+        "google calendar",
+        "colour palette",
+        "hex codes",
+        "pink and green",
+        "gingham washi",
+        "serif title",
+        "event blocks",
+        "stargazer lily",
+        "colour system"
+      ],
+      "imagePrompt": "A weekly calendar mockup filled with softly coloured event blocks in strawberry pink, rose, sage and matcha green, a green gingham washi tape strip on the corner, a serif title reading a palette name, a row of hex code swatches drawn with marker strokes below, and a pink stargazer lily photo in the corner, white background, clean, 4:3.",
+      "brief": "# Design brief: Strawberries & Matcha\n\nBuild a complete website in this aesthetic. Overall feel: a colour system before it is a design — pink and green, soft, organised, a little cottagecore.\n\n## Typography\nTitle: elegant serif (Playfair Display) 40px in two colours (pink + green words); UI text: Inter 13px #3C3C3C; hex codes in a rounded sans 18px coloured to match.\n\n## Color palette\nExactly: sage #9CAD8C, blush #E9B5BD, cherry #D2828B, rose #CE859A, pale sage #DDE0BC, pale pink #F0CBD7, off-white #ECE9E5. White base.\n\n## Layout\nWeek/board grid with 1px #EDEDED lines; events are rounded 6px blocks tinted with the palette; a sidebar or footer shows the swatch legend as marker strokes.\n\n## Spacing & shape\n4px event radius, 8px event padding, 40px row height, 24px page gutters.\n\n## Texture & imagery\nFlat, except a gingham washi strip (CSS repeating-linear-gradient) and one botanical photo.\n\n## Motion\nEvents slide/stretch smoothly when dragged; colour swatches \"paint\" in.\n\n## Do / Don't\nDO use only these 7 colours + white. DON'T add grey UI chrome heavier than #EDEDED. DO name colours playfully.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "cfaa11523c97",
+      "file": "9fe0009de180f8d9ef51c0a005672375.jpg",
+      "title": "Cream desktop with figs, sardine tin and Fleetwood Mac ticket",
+      "families": [
+        "widget-desktop",
+        "blush-pastel",
+        "vintage-ephemera",
+        "sticker-sheet"
+      ],
+      "tags": [
+        "cream wallpaper",
+        "custom icons",
+        "watercolour figs",
+        "concert ticket",
+        "sardine tin icon",
+        "sticky note to-do",
+        "pink illustration widget",
+        "mono handwriting font",
+        "flat icon set",
+        "macos"
+      ],
+      "imagePrompt": "Minimal cream-coloured desktop wallpaper with a large watercolour illustration of two halved figs in pink and pale green in the lower right corner, lots of empty warm off-white space, delicate botanical illustration style, 16:10.",
+      "brief": "# Design brief: Fig desktop\n\nBuild a complete website in this aesthetic. Overall feel: a tidy analogue desk — cream paper, one watercolour illustration, a vintage ticket and tiny object icons.\n\n## Typography\nClock: SF Rounded 40px #C97C8E pink. To-do note: a handwriting mono (e.g. \"Kalam\" / \"Nanum Pen\") 14px black on grey paper. Ticket: condensed grotesk + letterpress serif.\n\n## Color palette\nCream #F7F3EC, rose #C97C8E, pale peach #F6E9DC, grey note #E9E9E9, black ink #111, fig pink #E4A2B0, fig green #C9D3A3.\n\n## Layout\nIcons in a loose left column (each a tiny object photo: tin, star, butterfly); a sticky-note window top-left; two widgets bottom-left (illustration tile + clock); a rotated ticket stub; illustration anchored bottom-right.\n\n## Spacing & shape\nIcon grid 96px, widgets 12px radius, note 1px black border, ticket rotated -1°.\n\n## Texture & imagery\nFlat cream, watercolour illustration, halftone ticket print, object icons with transparent backgrounds.\n\n## Motion\nMinimal; hover on icons bounces 2px.\n\n## Do / Don't\nDO replace app icons with objects. DON'T use gradients. DO keep one illustration as the only large image.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "843c0183e495",
+      "file": "a92c41f19e5ccea2cf6cf7ddc071faf7.jpg",
+      "title": "Sprocket House — vintage textured agency site",
+      "families": [
+        "vintage-ephemera",
+        "scrapbook-collage"
+      ],
+      "tags": [
+        "damask wallpaper",
+        "torn paper",
+        "sepia",
+        "letterpress script",
+        "stamped labels",
+        "vintage photo",
+        "web 2.0 grunge",
+        "kraft",
+        "drop caps",
+        "paper layers"
+      ],
+      "imagePrompt": "Vintage website header composition: dark damask-patterned wallpaper background, a torn cream paper sheet laid over it with a hand-lettered script logo, a sepia photograph of an old storefront pinned top-right, a small stamped kraft label, rubber-stamp red text, letterpress serif body copy with a drop cap, sepia and cream palette, grungy realistic paper textures, 16:9.",
+      "brief": "# Design brief: Sprocket House vintage\n\nBuild a complete website in this aesthetic. Overall feel: an old print shop online — layered paper over damask, ink stamps, sepia photos; 2010 \"handmade web\" energy.\n\n## Typography\nLogo/section titles: brush script or letterpress script (Kaushan / Sacramento) 36–48px; body: old-style serif (Georgia / Libre Baskerville) 15px with a 3-line drop cap; labels: rubber-stamp condensed (Special Elite / Rye) in red.\n\n## Color palette\nDamask charcoal #2E2A26 / #3D3730, cream paper #EFE6D3, kraft #C8A878, sepia #8B7355, stamp red #B23A2F, link teal #2F7F8A.\n\n## Layout\nWide paper sheet centred (max 960px) over the wallpaper; header split logo-left / photo-right; stacked paper strips for sections; a right sidebar of kraft labels for client list.\n\n## Spacing & shape\nTorn edges 12–20px irregular; 0 radius; sections overlap by 16px; 32px paper padding.\n\n## Texture & imagery\nDamask SVG pattern, torn-paper PNG masks, coffee-stain and fold creases, halftone photos, stamp ink with rough edges.\n\n## Motion\nAlmost none; paper strips can slide up on scroll; stamps thunk in.\n\n## Do / Don't\nDO layer at least three paper types. DON'T use flat colour blocks. DON'T use modern sans-serif.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "59db6e19375a",
+      "file": "ac4645d6dd668c2e1c9c676294703eb4.jpg",
+      "title": "Monet water lilies (impressionist painting)",
+      "families": [
+        "painterly-texture"
+      ],
+      "tags": [
+        "impressionism",
+        "water lilies",
+        "blue green",
+        "brushwork",
+        "fine art wallpaper",
+        "pond",
+        "dappled light",
+        "canvas texture"
+      ],
+      "imagePrompt": "Impressionist oil painting of a lily pond, loose visible brushstrokes, blue-violet water reflecting sky, clusters of green lily pads with pink and white blossoms, soft dappled light, canvas texture, in the manner of late 19th-century French impressionism, 16:9.",
+      "brief": "# Design brief: Water-lily impressionist\n\nBuild a complete website in this aesthetic. Overall feel: museum calm — a painting as hero, with restrained gallery typography.\n\n## Typography\nGallery serif (Cormorant / Canela-like) 56px headlines in #1E2A44; captions in a small grotesk 12px uppercase tracking 0.15em #5A6273.\n\n## Color palette\nPond blue #5B7FB0, violet #7E7FB3, lily green #7FA36A, blossom pink #E8A0B0, cream wall #F4F1EA, ink #1E2A44.\n\n## Layout\nFull-bleed painting hero with a thin cream caption bar; content on cream \"gallery wall\" sections with wide margins and single-column reading width (640px); painting crops reappear as section headers.\n\n## Spacing & shape\n160px section padding, 0 radius, 1px hairline dividers #DCD7CC.\n\n## Texture & imagery\nCanvas weave overlay at 8% on painting crops; matte cream elsewhere.\n\n## Motion\nVery slow zoom on the hero; text fades; no hover effects on images.\n\n## Do / Don't\nDO respect the painting — no filters. DON'T put text over busy areas. DO use museum-label typography.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "06483de86e72",
+      "file": "ae3375ff509ae8911662c08f3fec9ee7.jpg",
+      "title": "Pink lily cut-out",
+      "families": [
+        "sticker-sheet",
+        "blush-pastel"
+      ],
+      "tags": [
+        "isolated flower",
+        "pink lily",
+        "white background",
+        "soft focus",
+        "sticker",
+        "botanical"
+      ],
+      "imagePrompt": "A single pink stargazer lily bloom isolated on a pure white background, petals slightly translucent, soft studio light from above, faint speckled stamens, photoreal with a slightly airbrushed softness, 1:1.",
+      "brief": "# Design brief: Single lily\n\nBuild a complete website in this aesthetic. Overall feel: one flower, all the space — a botanical sticker as brand mark.\n\n## Typography\nThin serif (Cormorant Light) 48px in #B0788A; body Inter 15px #4A4446.\n\n## Color palette\nWhite #FFFFFF, lily pink #F0A9C0 / #E07A9A, stamen red #C43A3A, cream #FBF7F4.\n\n## Layout\nCentred single-object hero, then generous single-column text; the lily reappears small as a bullet/sticker beside headings.\n\n## Spacing & shape\n200px hero padding, 720px content width.\n\n## Texture & imagery\nNone; the soft-focus flower only.\n\n## Motion\nLily fades/scales in 1.2s; petals sway 1° on hover.\n\n## Do / Don't\nDO keep one object per view. DON'T tile the flower. DON'T add pattern.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "db0055942e06",
+      "file": "af96e4c5cc0565284cbbe4e3bc0bb093.jpg",
+      "title": "Blush pink MacBook desktop with macarons",
+      "families": [
+        "widget-desktop",
+        "blush-pastel"
+      ],
+      "tags": [
+        "pink gradient wallpaper",
+        "macos widgets",
+        "macaron photo",
+        "coffee art tile",
+        "bible verse card",
+        "countdown widget",
+        "activity rings",
+        "sonny angel icons",
+        "calendar widget",
+        "photographed laptop"
+      ],
+      "imagePrompt": "Soft blush pink to dusty rose vertical gradient desktop wallpaper, very smooth, slight warm glow at the top, no objects, 16:10.",
+      "brief": "# Design brief: Macaron pink desktop\n\nBuild a complete website in this aesthetic. Overall feel: girly, organised, soft — pastel pink everything with cream photo tiles.\n\n## Typography\nClock: SF Pro 88px 300 white; date 16px uppercase 600 tracking 0.1em; card text 12px #6E5E63; a serif (EB Garamond) for the quote card.\n\n## Color palette\nGradient #F6D9E0 → #DDB7C1; cards rgba(255,255,255,0.7); dark player #2B2427; accents pink #E58BA3, green ring #3DD68C, yellow ring #F3C63B.\n\n## Layout\nThree-column widget grid: left (counters, photos), centre (clock + player + icon row), right (photo grid, activity, to-do, calendar). Symmetrical, almost full.\n\n## Spacing & shape\n12px gutters, 16px radius, photos 2×2 tiles with 6px white padding.\n\n## Texture & imagery\nFrosted white cards, photographic pastel tiles (macarons, latte, peonies), tiny 3D figurine icons.\n\n## Motion\nRings animate on load; countdown ticks.\n\n## Do / Don't\nDO keep everything pink/cream/white. DON'T leave large empty areas — this one is intentionally full. DON'T use black except the player.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "1c08150ddcb4",
+      "file": "c71cf62f8194e89975baa5fb4d05c205.jpg",
+      "title": "\"Lovely\" lily postage stamp",
+      "families": [
+        "vintage-ephemera",
+        "blush-pastel",
+        "sticker-sheet"
+      ],
+      "tags": [
+        "postage stamp",
+        "perforated edge",
+        "postmark",
+        "pink lilies",
+        "helvetica",
+        "vertical text",
+        "grey stamp",
+        "sticker"
+      ],
+      "imagePrompt": "A designed postage stamp on white: light grey stamp with perforated edges, a rounded-rectangle frame containing two pink lilies, bold Helvetica denomination \"150 cents\" top-left, small sans text bottom-left, the word \"LOVELY\" running vertically along the right edge, a black circular postmark and wavy cancellation lines overlapping the corner, flat graphic style, 1:1.",
+      "brief": "# Design brief: Lily stamp\n\nBuild a complete website in this aesthetic. Overall feel: Swiss-postal minimalism with a soft subject — grey, Helvetica, one pink flower.\n\n## Typography\nHelvetica / Inter: denomination 40px 700, secondary 16px 400, vertical label 18px uppercase tracking 0.3em rotated 90°.\n\n## Color palette\nStamp grey #EEEEEE, white #FFFFFF, black #111, pink #EFA3B8, postmark black at 80%.\n\n## Layout\nComponents as stamps: every card is a perforated-edge rectangle with a rounded inner frame; a vertical label on the right edge; postmark as the interaction/“sent” state.\n\n## Spacing & shape\nPerforation 6px radius circles every 12px (CSS mask); 4px inner frame offset; 24px inner padding.\n\n## Texture & imagery\nFlat, except the ink postmark (slightly rough SVG strokes).\n\n## Motion\nPostmark stamps down (scale 1.4→1, 120ms) when an action completes.\n\n## Do / Don't\nDO use perforated edges as the signature shape. DON'T add shadows. DO use one photo per stamp.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "720b6c8a3537",
+      "file": "d499e547773fb1a0ad568c3c58095c80.jpg",
+      "title": "Soft grey MacBook desktop with handwriting",
+      "families": [
+        "widget-desktop",
+        "soft-ui-cards"
+      ],
+      "tags": [
+        "grey white wallpaper",
+        "macos widgets",
+        "handwritten affirmations",
+        "ocean photo tile",
+        "app folder widget",
+        "calendar month",
+        "weather row",
+        "beige neutrals",
+        "photographed laptop"
+      ],
+      "imagePrompt": "Abstract soft grey and white wallpaper like silk or blurred fog, gentle light gradient with a faint diagonal fold, very minimal and airy, 16:10.",
+      "brief": "# Design brief: Grey silk desktop\n\nBuild a complete website in this aesthetic. Overall feel: neutral and serene — greys, whites, a few affirmations in cursive.\n\n## Typography\nClock SF Pro 96px 300 #1F1F1F; date 18px; handwritten script (Homemade Apple / Caveat) 22px #3A3A3A for affirmations; calendar 13px.\n\n## Color palette\nSilk grey #E9E9EA → #F5F5F5, white cards rgba(255,255,255,.85), dark grey #1F1F1F, muted #8A8A8E, tiny accent black.\n\n## Layout\nLeft column stack: clock card with script note, rings, ocean photo, quote card, app folder, player; below: month calendar + weather row; wallpaper visible right.\n\n## Spacing & shape\n12px gutters, 14px radius, cards 200px units.\n\n## Texture & imagery\nSilk gradient wallpaper, black-and-white ocean photo, script written directly on the wallpaper.\n\n## Motion\nScript draws itself once (SVG stroke) on load; else static.\n\n## Do / Don't\nDO stay monochrome. DON'T add colour beyond app icons. DO use handwriting for warmth.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "4d4ecfc5db95",
+      "file": "d639cba71e5221f696184f4a1401c0fa.jpg",
+      "title": "Daily — moodboard journal app",
+      "families": [
+        "scrapbook-collage",
+        "soft-ui-cards"
+      ],
+      "tags": [
+        "app ui",
+        "page fan carousel",
+        "navy background",
+        "moodboard spread",
+        "cursive annotations",
+        "colour swatch dots",
+        "photo grid",
+        "circular icon buttons"
+      ],
+      "imagePrompt": "A fanned stack of journal pages floating over a dusty navy background, the open front spread showing a clean moodboard of six landscape and portrait photos on white with cursive handwritten labels and arrows, a row of five small colour swatch circles, pages behind fanned out showing magazine covers and photos, white circular icon buttons top corners and bottom centre, app mockup, 4:3.",
+      "brief": "# Design brief: Daily moodboard app\n\nBuild a complete website in this aesthetic. Overall feel: the calmer sibling of a scrapbook — white spreads, photos, cursive notes; navy chrome.\n\n## Typography\nTitle Inter 600 28px white; cursive annotation font (Dancing Script / Homemade Apple) 18px #333 on the page; swatch labels 10px.\n\n## Color palette\nShell navy #3F4A6B, page white #FFFFFF, ink #333, swatch dots from the photos (dusty rose, slate, olive, navy).\n\n## Layout\nSpread = 2 columns of photos with masonry offsets, annotations in the margins with hand-drawn arrows, a swatch row bottom-right; carousel fans previous pages at -6°/-12°/-18°.\n\n## Spacing & shape\n16px photo gaps, 8px page radius, 44px circular buttons.\n\n## Texture & imagery\nMatte white page, soft shadow under the stack; no paper grain.\n\n## Motion\nSwipe fan with spring; swatches pop in; arrows draw.\n\n## Do / Don't\nDO keep the page clean — annotations only in margins. DON'T use stickers here. DO auto-extract palette dots from photos.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "0cc776663251",
+      "file": "d96888d88460f33e60eed886c6921dd6.jpg",
+      "title": "Widgy \"good afternoon\" dashboard widget",
+      "families": [
+        "soft-ui-cards"
+      ],
+      "tags": [
+        "greige card",
+        "lowercase greeting",
+        "calendar grid",
+        "highlight pills",
+        "cream and pink",
+        "rounded sans",
+        "weather glyph",
+        "sunset time",
+        "ios widget"
+      ],
+      "imagePrompt": "A wide rounded widget mockup on a warm greige background: lowercase \"good afternoon\" greeting top-left with a weather icon and temperature top-right, a small monthly calendar in a taupe rounded block on the left, two highlight pills on the right in pale yellow and blush pink with simple black glyphs, warm neutral palette, soft flat design, 16:9.",
+      "brief": "# Design brief: Good afternoon widget\n\nBuild a complete website in this aesthetic. Overall feel: a warm, lowercase morning dashboard — greige, butter, blush; friendly and unhurried.\n\n## Typography\nRounded sans (SF Rounded / Nunito) — greeting 28px 600 lowercase #2B2622, section labels 18px 400, pill text 16px, calendar 12px.\n\n## Color palette\nPage #EDE6E0, card #E4DED6, taupe block #C9BEA3, butter #FFF3D6, blush #FAD6DC, ink #2B2622, muted #7A7169.\n\n## Layout\nWide card: header row (greeting | weather), then two columns — calendar block left (45%), stacked highlight pills right (55%).\n\n## Spacing & shape\n24px card radius, 20px padding, 12px pill radius, 14px pill padding, 10px gap.\n\n## Texture & imagery\nFlat matte; no shadows; today's date is a filled dark circle.\n\n## Motion\nPills slide in from the right; greeting swaps with time of day via fade.\n\n## Do / Don't\nDO keep everything lowercase. DON'T use pure white or pure black. DO use glyph icons, not emoji.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "418a1b16f0fb",
+      "file": "da7de56b9adccfa20019ece6140d38b0.jpg",
+      "title": "Shopping-list sticky note app icon",
+      "families": [
+        "soft-ui-cards"
+      ],
+      "tags": [
+        "app icon",
+        "sticky note",
+        "butter yellow",
+        "blue handwriting",
+        "strikethrough item",
+        "stacked paper",
+        "rounded square",
+        "skeuomorphic"
+      ],
+      "imagePrompt": "A rounded-square app icon on light grey: butter yellow squircle background with two stacked cream paper notes slightly rotated, the top note lined with a small uppercase title and a short list handwritten in bright blue ink with one item crossed out, soft shadow between the sheets, clean skeuomorphic 3D-flat style, 4:3.",
+      "brief": "# Design brief: Sticky-note to-do\n\nBuild a complete website in this aesthetic. Overall feel: a paper note in a modern squircle — cheerful yellow, blue ink, one thing crossed off.\n\n## Typography\nTitle: rounded sans 12px uppercase tracking 0.1em #C9A54A; list items: handwritten marker font (Caveat / Permanent Marker light) 22px in ink blue #2457E6; strikethrough drawn by hand (SVG).\n\n## Color palette\nButter #F2D67A, cream note #FFF6E3, note lines #EFE3CC, ink blue #2457E6, page #F1F1F1, shadow rgba(0,0,0,.12).\n\n## Layout\nSquircle container (radius 22% ) holding two note sheets offset 6px and rotated -3°/+2°; list rows on 40px ruled lines; a \"…\" trailing row.\n\n## Spacing & shape\nNote padding 24px, ruled lines 40px, sheet radius 8px.\n\n## Texture & imagery\nMatte paper, faint ruled lines, soft sheet shadow; no gloss.\n\n## Motion\nAdding an item writes in with a stroke animation; completing draws a squiggle strikethrough.\n\n## Do / Don't\nDO use handwriting for user content and sans for system labels. DON'T use checkboxes — strike-through is the check. DO keep one accent (blue).",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "15d3c93aa7d8",
+      "file": "dd0cfc4b67c9fda4cb05ae9addadcaf6.jpg",
+      "title": "\"Life lately\" red scrapbook spread",
+      "families": [
+        "scrapbook-collage",
+        "moody-jewel"
+      ],
+      "tags": [
+        "dark red background",
+        "handwritten journaling",
+        "torn lined paper",
+        "matcha photo",
+        "sylvanian figures",
+        "sticker stars",
+        "photo strip",
+        "sanrio stickers",
+        "bandage sticker",
+        "multicolour lettering"
+      ],
+      "imagePrompt": "Scrapbook spread on a deep red textured background: a torn lined-paper note with a handwritten song list, a small grid of beach photos with black borders, stickers of stars, a lime slice, a matcha latte cup and small figurines, handwritten paragraphs in black pen wandering around the page, a big hand-lettered multicolour title bottom-left, washi tape and a bandage sticker, playful and dense, 4:3.",
+      "brief": "# Design brief: Life lately red\n\nBuild a complete website in this aesthetic. Overall feel: a diary page that never stops — red base, handwriting everywhere, stickers in the gaps.\n\n## Typography\nTitle: hand-lettered mixed-colour caps (each letter a different pastel) 64px; journaling: neat handwriting font (Patrick Hand / Indie Flower) 15px black; song list in the same handwriting on lined paper.\n\n## Color palette\nRed #8C1F2A / #A32833 base, paper #FBF7EE, pen black #1A1A1A, sticker pastels (pink #F3B6C8, mint #BFE3D0, butter #F7E7A6), matcha green #7FA84A.\n\n## Layout\nFreeform: text blocks flow around stuck-down objects; photos in a 1×3 vertical strip on the right; a torn note top-centre; title bottom-left; stickers fill whitespace.\n\n## Spacing & shape\nNo gutters; objects rotated ±5°; photo borders 8px black; tape 40×12px.\n\n## Texture & imagery\nTextured red paper, torn edges, sticker gloss, hard shadows.\n\n## Motion\nStickers peel on hover; handwriting appears line by line on scroll.\n\n## Do / Don't\nDO use handwriting as body text. DON'T use grid alignment. DO keep the red dark, not bright.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "9c99b2a2b6a2",
+      "file": "de436e5526792007b89f593ac1d144bc.jpg",
+      "title": "Star sticker collection",
+      "families": [
+        "sticker-sheet"
+      ],
+      "tags": [
+        "stars",
+        "sticker sheet",
+        "embroidered patch",
+        "sequins",
+        "chrome",
+        "denim",
+        "newspaper",
+        "pastel",
+        "material study",
+        "white background"
+      ],
+      "imagePrompt": "A sticker-sheet collection of about forty five-point stars on pure white, each made of a different real material — pink satin, embroidered denim, chrome, gold foil, sequins, newspaper, stained glass, plush, iridescent glass, gingham — evenly scattered, varied sizes, photoreal cut-outs with faint shadows, vertical 9:16.",
+      "brief": "# Design brief: Star materials\n\nBuild a complete website in this aesthetic. Overall feel: one shape, forty materials — a catalogue that doubles as a sticker sheet.\n\n## Typography\nTiny: a rounded mono (JetBrains Mono / Space Mono) 11px for material names; headline in a chunky rounded sans 40px only if needed.\n\n## Color palette\nWhite #FFFFFF; stars supply the palette — bubblegum pink, denim blue, gold, chrome, lilac, mint; text #222.\n\n## Layout\nDense scatter grid: CSS grid with random cell spans, items centred, rotated ±15°, sizes 48–140px; filter chips by material.\n\n## Spacing & shape\n24px gaps, edges bleed off; no card backgrounds.\n\n## Texture & imagery\nPhotoreal object cut-outs with 0 2px 4px rgba(0,0,0,.15) shadows.\n\n## Motion\nStars are draggable; hover wobbles ±3°; new items pop in with scale bounce.\n\n## Do / Don't\nDO keep the white pure. DON'T add borders or containers. DO vary rotation.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "cdf7e4136190",
+      "file": "download.png",
+      "title": "Bulldog clips, pins and bows collection",
+      "families": [
+        "sticker-sheet"
+      ],
+      "tags": [
+        "bulldog clips",
+        "push pins",
+        "gingham bows",
+        "binder clips",
+        "wax seal",
+        "washi tape",
+        "stationery",
+        "pastel enamel",
+        "white background",
+        "object catalogue"
+      ],
+      "imagePrompt": "Sticker-sheet collection of stationery objects on pure white: pastel enamel bulldog clips in pink, mint, lilac, navy and red, brass and chrome binder clips, coloured push pins, gingham ribbon bows in red, green and blue, a pink wax seal, a strip of masking tape — evenly scattered, photoreal cut-outs, vertical 9:16.",
+      "brief": "# Design brief: Stationery objects\n\nBuild a complete website in this aesthetic. Overall feel: a desk drawer emptied onto white — tactile, pastel, orderly chaos.\n\n## Typography\nSmall mono captions 11px #444; a condensed grotesk for section labels; nothing large.\n\n## Color palette\nWhite; enamel pastels — pink #F4B9C6, mint #BFDCC5, lilac #D9C4DC, navy #22406A, red #D63A2F, brass #B89A5A.\n\n## Layout\nScatter grid; objects used as UI — bulldog clips \"hold\" cards at the top edge, pins mark items, bows decorate headings, tape strips as dividers.\n\n## Spacing & shape\nClips overhang cards by 24px; pins 32px; 32px gaps.\n\n## Texture & imagery\nPhotoreal object PNGs with contact shadows; cards are plain paper #FAFAF7.\n\n## Motion\nClip springs open/closed on hover; pins push in on click.\n\n## Do / Don't\nDO use real objects as affordances. DON'T illustrate them flat. DO keep the base white.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "130e6744d780",
+      "file": "f4a035a1c07aeb6a78b5da26e3e47724.jpg",
+      "title": "Pink-and-green swirl desktop with Sonny Angels",
+      "families": [
+        "widget-desktop",
+        "blush-pastel",
+        "painterly-texture"
+      ],
+      "tags": [
+        "grainy gradient wallpaper",
+        "pink green swirl",
+        "macos widgets",
+        "vintage illustration tiles",
+        "pressed flower",
+        "tulip drawing",
+        "sonny angel icons",
+        "music player",
+        "dreamy"
+      ],
+      "imagePrompt": "Dreamy grainy wallpaper of soft pink and pale green blurred swirls, like coloured chalk smudged into a spiral, heavy film grain, faint yellow highlights, no objects, 16:10.",
+      "brief": "# Design brief: Chalk swirl desktop\n\nBuild a complete website in this aesthetic. Overall feel: dreamy and vintage — pastel chalk swirls behind old-book illustrations and tiny figurines.\n\n## Typography\nClock SF Pro 44px 400 white; date 12px; illustration captions in a hand-written script (Homemade Apple) 12px.\n\n## Color palette\nPink #E8B7C0, green #BFD3A6, cream #F3EAE0, yellow highlight #F2E1A0, ink #4A3B3B; player card dark #2A2426.\n\n## Layout\nWidgets clustered top-left in a 2-column stack (clock, art tiles, pressed flower, player, illustrated card), icon row of figurines beneath; the rest of the screen is the swirl.\n\n## Spacing & shape\n12px gutters, 14px radius, illustrated card 1px #D8B7C0 border.\n\n## Texture & imagery\nHeavy grain gradient, vintage illustration scans, pressed-flower photo, figurine icons.\n\n## Motion\nSwirl rotates 360° over 120s barely perceptibly; player progress.\n\n## Do / Don't\nDO keep grain visible. DON'T sharpen the gradient. DO use scanned/vintage illustrations rather than modern icons.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "image"
+    },
+    {
+      "id": "c113595c8dbb",
+      "file": "Photo Booth Save the Date Template Animated Photostrip Reveal 20.mp4",
+      "title": "Photo-booth save-the-date (animated photostrip reveal)",
+      "families": [
+        "moody-jewel",
+        "vintage-ephemera",
+        "scrapbook-collage"
+      ],
+      "tags": [
+        "burgundy",
+        "photostrip reveal",
+        "script typography",
+        "wedding invitation",
+        "mobile site",
+        "small caps",
+        "animated",
+        "cream on dark",
+        "photo booth slot"
+      ],
+      "imagePrompt": "Mobile wedding invitation mockup on a deep burgundy background: a vertical photo-booth slot rendered in soft rose-gold metallic 3D from which a black-and-white photostrip of a couple slides out, elegant white script names above, small spaced uppercase text \"we are getting married\", \"you're invited\" in script at the bottom, cinematic soft lighting, 9:16.",
+      "brief": "# Design brief: Photostrip save-the-date\n\nBuild a complete website in this aesthetic. Overall feel: cinematic romance — a single object animating out of the dark; nothing else competes.\n\n## Typography\nNames: a flourished script (Pinyon Script / Great Vibes) 56px cream; supporting lines: sans small caps 12px tracking 0.35em cream; a serif 16px for details.\n\n## Color palette\nBurgundy #5A1A22 / #4A1219, cream #F3E9DC, rose-gold gradient #C99A7A → #E6C2A8, photo black-and-white.\n\n## Layout\nMobile single column, centred: eyebrow line → script names → hero object (photostrip slot) → script CTA → small caps button; everything vertically stacked with equal rhythm.\n\n## Spacing & shape\n32px between blocks, 24px page padding, hero object 60% height.\n\n## Texture & imagery\nVelvet matte background with vignette, metallic 3D slot with soft reflections, grainy B&W photos.\n\n## Motion\nOn load: names fade, then the strip slides up out of the slot over 1.6s with ease-out, then CTA appears; scroll reveals details with slow fades.\n\n## Do / Don't\nDO animate one hero object only. DON'T use more than two type styles. DO keep the palette to burgundy + cream + rose-gold.",
+      "notes": "",
+      "url": "",
+      "addedAt": "2026-09-21T19:44:06.148Z",
+      "analyzed": true,
+      "analyzedBy": "claude (seed)",
+      "kind": "video"
+    }
+  ]
+}
