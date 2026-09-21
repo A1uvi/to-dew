@@ -182,7 +182,8 @@ Quick entry
      next task.
      Light natural-language parsing on entry: "Call dentist 3pm" sets a due time, "!" at the
      end sets the flag, "tomorrow" or "fri" schedules it. Parsed tokens are highlighted and
-     can be dismissed with Escape.
+     can be dismissed with Escape while the entry field has focus; a second Escape clears the
+     field and gives up focus.
      Pasting multiple lines creates one task per line.
 
 Keyboard
@@ -196,6 +197,8 @@ Keyboard
    Space or Cmd Return         Toggle done
 
    Return                      Edit title inline
+
+   Escape                      Cancel an inline edit, or dismiss parsed entry tokens
 
    Cmd I                       Open detail (note, due time)
 
@@ -317,6 +320,10 @@ Streak rules
      rollover.
      A day with zero tasks on the list is neutral. It neither extends nor breaks the streak.
      This keeps weekends and holidays from punishing the user.
+     A day that had tasks and no completion is a failure and breaks the streak. This includes
+     a day the app was never opened on: returning after four days away to four days of
+     carried tasks is four failures, and the streak starts again. The streak measures days
+     finished, not days visited. (Settled 2026-09-21. Not re-opened.)
      Longest streak is stored and shown beside the current one.
      Un-checking the only completed task of today removes today from the streak again.
      Streaks can be hidden entirely in Settings for users who dislike them.
@@ -378,8 +385,12 @@ notifications even when the app is closed.
 
      Permission is requested the first time the user sets a due time or enables a reminder,
      not at first launch.
-     The morning notification is scheduled as a repeating daily trigger. Its text is refreshed
-     whenever tasks change, since it cannot compute counts at delivery time.
+     The morning notification is scheduled as a queue of single dated reminders, one per day
+     for the week ahead, rather than as one repeating daily trigger. A notification's text is
+     fixed when it is scheduled and cannot be computed at delivery time, and a repeating
+     trigger would keep delivering the text it was created with. The queue is rewritten
+     whenever tasks change, and on launch and on wake, so each morning's reminder carries
+     that morning's counts.
      Clicking a notification opens the app to the relevant task or to the morning review.
      Respect Focus modes. No custom sounds by default.
 
@@ -388,8 +399,9 @@ Dock
      off.
      Dock menu (right-click): New Task, the first five open tasks with click-to-complete, and
      Show Today.
-     The Dock icon can optionally reflect the day state (clear, in progress, all done). This is a
-     stretch goal, decided with the visual design.
+     The Dock icon does not reflect the day state. This was a stretch goal to be decided with
+     the visual design; it is cut for 1.0. The layered app icon already carries the four macOS
+     26 appearances, and the open count lives in the badge.
 
                                                                                            Page 10 of 20
 To Dew: Product Spec
@@ -447,8 +459,9 @@ Requirements for the build
      Materials. Background supports solid, system material and Liquid Glass options
      through the theme. Glass is applied only to floating chrome such as toolbars and the
      entry field, never to content rows.
-     Light, dark and accent. Every token has light and dark values. The user's system
-     accent color is respected unless the theme overrides it.
+     Light, dark and accent. Every token has light and dark values, with one exception: the
+     wallpaper is a light-scheme decoration only, and the dark scheme uses a flat background
+     instead. The user's system accent color is respected unless the theme overrides it.
      Typography. Text uses semantic styles (title, body, caption) mapped in the theme, so a
      custom font can be swapped in later. Dynamic text size is supported.
      Sound and haptics. A Feedback service handles completion sounds and trackpad
@@ -510,7 +523,9 @@ Rules for the code
      The clock is injected. DayClock takes a now provider so tests can simulate any date,
      sleep gap or time zone jump.
      Rollover is idempotent. Running it twice for the same day changes nothing.
-     All writes go through one store actor so the app and widget never conflict.
+     All writes go through one store actor. An actor serialises one process, not two, so the
+     app is the only writer: the widget opens the store read-only, and its checkbox is the
+     single exception, scoped to completing one task and announced so the app refetches.
 
                                                                                         Page 13 of 20
 To Dew: Product Spec
@@ -791,12 +806,15 @@ Answered questions
 
    Languages                        English only
 
+   Dock icon reflects day state?    No. Cut for 1.0; the badge carries the count
+
 Still open
      Bundle identifier prefix, usually com.<your GitHub username>.todew . Needed at
      milestone 0.
      Name styling: "To Dew", "to dew" or "ToDew" in the Dock and menu bar. Can wait for the
      design phase.
-     Keep or cut the floating icon after trying it in milestone 6.
+     Keep or cut the floating icon after trying it. It is built last in milestone 7, in its own
+     pull request, and nothing depends on it, so cutting it is a revert. Decided before 1.0.
 
                                                                                           Page 20 of 20
 
@@ -806,3 +824,10 @@ Still open
 - Name styling in Dock and menu bar: **To Dew** (title case).
 - Fonts: Cormorant Garamond (display) and Jost (body), bundled with the app.
 - The system accent color is overridden by the theme.
+
+## About this document (added 2026-09-21)
+
+This Markdown file is the source of truth. `design/To Dew Product Spec.pdf` is the original
+formatted copy and is not regenerated when this file is edited, so where the two differ, this
+file is correct and the PDF is history. Tables here were extracted from the PDF and are plainer
+than the original; read the PDF when the formatting matters and this file when the content does.

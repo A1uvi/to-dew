@@ -78,7 +78,7 @@ and toolbar, per spec. Content rows are never glass.
 - **EmptyState** — centered muted 13 pt line; morning: "A clean slate. What is the one thing for today?"; all done: sage circle check + "All done for today".
 - **Nav** — segmented pill in surfaceAlt; selected segment `surfaceAlt`-on-`surface` contrast inverted (light: selected = ink text on pale sage; unselected = muted).
 - **Widget (medium)** — surface card, radius 14, ring (56 pt) with open count, "n of m done / streak", top 4 tasks with 16 pt circle checks. Must survive tinted/clear widget styles: never encode state by color alone (ring + count + check glyph).
-- **Sticker accent** — one lily cut-out (`design/stickers/lily.png`) may sit outside the window at the bottom-right of the desktop widget/onboarding art; never inside content rows. A small pink star is used on the About screen only. Keep to one sticker per surface.
+- **Sticker accent** — one lily cut-out (`design/stickers/lily.png`) may sit outside the window at the bottom-right of the desktop widget/onboarding art; never inside content rows. The small pink star (`design/stickers/star-pink.png`) sits in the `DayHeader`, to the left of the greeting line, in every state of that component. The greeting is inset far enough that the star never overlaps it — the whole of "Good morning" reads clear. The mockup shows the star drawn over the word "Good"; that is an artefact of the mockup, not the design. The star's size, its offset, the measurement of that inset and its dark-scheme treatment are all set against `design/mockups/today.png` in the milestone 2b screenshot round and are deliberately not specified here. Keep to one sticker per surface.
 
 ## Motion (named hooks from the spec)
 
